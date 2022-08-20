@@ -19,7 +19,7 @@
               {{ item.texte }}
               {% endautoescape %}
             </div>
-            <p><a href="{{ item.lien }}" title="{{ item.lienTitle }}" class="est-en-savoir-plus">En savoir +</a></p>
+            <p><a href="{{ page.find(item.lien).url }}" title="{{ item.lienTitle }}" class="est-en-savoir-plus">En savoir +</a></p>
           </div>
         {% endfor %}
 

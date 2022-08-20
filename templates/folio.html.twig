@@ -79,7 +79,7 @@
     <section class="section">
         <div class="container is-widescreen">
             <div class="columns is-gapless is-multiline">
-            {% for image in page.media %}
+            {% for image in page.media|sort %}
                 <div class="column is-one-third">
                     <figure class="image">
                         {{ image.html|raw }}

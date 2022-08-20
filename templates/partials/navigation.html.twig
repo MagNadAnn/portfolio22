@@ -1,11 +1,11 @@
-<section class="navbar-menu-main is-flex is-justify-content-flex-end">
+<section class="navbar-menu-main is-flex is-justify-content-flex-end is-flex-wrap-wrap">
 {% for page in pages.children.visible %}
     {% if page.header.menuNavBar1 %}
     <a  href="{{ page.url }}" class="navbar-item navbar-menu-item {{ active_page }}">{{ page.menu }}</a>
     {% endif %}
 {% endfor %}
 </section>
-<section class="is-flex is-justify-content-flex-end">
+<section class="is-flex is-justify-content-flex-end is-flex-wrap-wrap">
 {% for page in pages.children.visible %}
     {% if page.header.menuNavBar2 %}
     <a  href="{{ page.url }}" class="navbar-item navbar-menu-item {{ active_page }}">{{ page.menu }}</a>
@@ -13,7 +13,7 @@
 {% endfor %}
 <a  href="https://magnad.blog/" class="navbar-item navbar-menu-item">Blog</a>
 </section>
-<section class="is-flex is-justify-content-flex-end">
+<section class="is-flex is-justify-content-flex-end is-flex-wrap-wrap">
 {% for page in pages.children.visible %}
     {% if page.header.menuNavBar3 %}
     <a  href="{{ page.url }}" class="navbar-item navbar-menu-item {{ active_page }}">{{ page.menu }}</a>
