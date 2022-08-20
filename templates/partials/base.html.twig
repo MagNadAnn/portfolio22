@@ -1,0 +1,78 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+
+<!DOCTYPE html>
+<html lang="{{ (grav.language.getActive ?: theme_config.default_lang)|e }}">
+<head>
+{% block head %}
+    <meta charset="utf-8" />
+    <title>{% if header.title %}{{ header.title|e }} | {% endif %}{{ site.title|e }}</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png')|e }}" />
+    <link rel="canonical" href="{{ page.url(true, true)|e }}" />
+{% endblock head %}
+
+{% block stylesheets %}
+    {% do assets.addCss('https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css', 100) %}
+    {% do assets.addCss('theme://css/custom.css', 99) %}
+{% endblock %}
+
+{% block assets deferred %}
+    {{ assets.css()|raw }}
+    {{ assets.js()|raw }}
+{% endblock %}
+
+</head>
+<body id="top" class="{{ page.header.body_classes|e }}">
+
+{% block header %}
+<header>
+    <nav class="navbar is-align-items-flex-start" role="navigation" aria-label="main navigation">
+        <div class="container is-widescreen">
+        
+            <div>
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="{{ (base_url == '' ? '/' : base_url)|e }}">
+                        <img src="{{ url('theme://images/typo_margot-nadot_gris.png') }}" width="240" height="42" alt="{{ config.site.title|e }}">
+                    </a>
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                <nav class="breadcrumb" aria-label="breadcrumbs">
+                    {% include 'partials/breadcrumbs.html.twig' %}
+                </nav>
+            </div>
+
+            {% block header_navigation %}
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-end is-flex-direction-column">
+                    {% include 'partials/navigation.html.twig' %}
+                </div>
+            </div>
+            {% endblock %}
+        </div>
+    </nav>
+</header>
+{% endblock %}
+
+{% block body %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+{% endblock %}
+
+{% block footer %}
+
+<footer class="mt-6 pt-6">
+    {% include 'modular/rendezvous.html.twig' %}
+    {% include 'partials/footer.html.twig' %}
+</footer>
+
+{% endblock %}
+
+</body>

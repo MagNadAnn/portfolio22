@@ -1,0 +1,28 @@
+<section class="section fond-Evolution-jaune-20 est-couvrant">
+    <div class="container is-widescreen pb-6">
+      <h2 class="special-titre-besoin"><img src="{{ page.media[page.header.titreImage].url }}" alt="{{ page.header.titre }}"></h2>
+      {{ content|raw }}
+      <div class="columns is-variable is-8 is-multiline">
+
+        {% for item in page.header.items %}
+          <div class="column is-half est-max-30">
+            <figure>
+              <img src="{{ page.media[item.image].url }}">
+            </figure>
+            <h3 class="title is-4 is-uppercase">
+              {% autoescape false %}
+                {{ item.titre }}{# your_item won't be escaped #}
+              {% endautoescape %}
+            </h3>
+            <div>
+              {% autoescape false %}
+              {{ item.texte }}
+              {% endautoescape %}
+            </div>
+            <p><a href="{{ item.lien }}" title="{{ item.lienTitle }}" class="est-en-savoir-plus">En savoir +</a></p>
+          </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>

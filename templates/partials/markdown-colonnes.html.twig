@@ -1,0 +1,5 @@
+<div class="columns is-variable is-6 is-multiline">
+    {% for column in page.content|split('<hr />') %}
+        <div class="column {{ page.header.colonnes }} style-markdown">{{ column|raw }}</div>
+    {% endfor %}
+</div>

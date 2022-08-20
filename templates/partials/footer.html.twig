@@ -1,0 +1,61 @@
+<main  class="section fond-2connes-gris est-couvrant footer-centre-mobile">
+    <div class="container is-widescreen pt-4 pb-6">
+        <div class="columns is-multiline is-variable is-6">
+            <div class="column is-narrow">
+                <figure><img src="{{ url('theme://images/MN_jaune-100.png') }}"></figure>
+                <figure><img src="{{ url('theme://images/logo-oxalis.png') }}"></figure>
+            </div>
+            <div class="column">
+                <a href="#"><img src="{{ url('theme://images/typo_margot-nadot_blanc.png') }}"></a>
+                <div class="columns is-multiline">
+                    <div class="column is-full-tablet is-half-widescreen">
+                        <div class="footer-menu est-vertical">
+                            {% for page in pages.children.visible %}
+                                {% if page.header.menuFooter1 %}
+                                <a  href="{{ page.url }}">{{ page.menu }}</a>
+                                {% endif %}
+                            {% endfor %}
+                            <a  href="https://magnad.blog/">Blog</a>
+                        </div>
+                    </div>
+                    <div class="column is-half">
+                        <div class="footer-menu est-vertical">
+                            {% for page in pages.children.visible %}
+                                {% if page.header.menuFooter2 %}
+                                <a  href="{{ page.url }}">{{ page.menu }}</a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="columns is-multiline">
+                    <div class="column is-full-tablet is-half-widescreen">
+                        <div class="macaron">
+                            <img class="fond-macaron" src="{{ url('theme://images/rond_jaune-100.png') }}">
+                            <figure><img src="{{ url('theme://images/picto_cookie.png') }}"></figure>
+                            <p>Ce site ne collecte <br><strong class="est-surligne est-blanc">aucun cookie</strong>, ni aucune donnée personnelle. Il n’utilise aucun service tiers suceptible d’enregistrer votre navigation.</p>
+                        </div>
+                    </div>
+                    <div class="column is-full-tablet is-half-widescreen">
+                        <div class="macaron est-vert">
+                            <img class="fond-macaron" src="{{ url('theme://images/rond_vert.png') }}">
+                            <figure><img src="{{ url('theme://images/picto_feuille.png') }}"></figure>
+                            <p>Ce site est <strong class="est-surligne est-blanc">eco-conçu</strong>. <br>C’est à dire qu’il est optimisé pour être léger et consommer le moins de data possible.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer class="section px-a pb-4 pt-0 fond-noir bord-dessine bord-haut bord-noir">
+    <div class="footer-menu est-horizontal">
+        {% for page in pages.children.visible %}
+            {% if page.header.menuFooter3 %}
+            <a  href="{{ page.url }}">{{ page.title }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</footer>

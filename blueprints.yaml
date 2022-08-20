@@ -1,0 +1,12 @@
+name: Portfolio22
+slug: portfolio22
+type: theme
+version: 1.0.0
+description: "Portfolio22 est le thème du nouveau site de Margot Nadot pour présenter son activité et ses travaux graphiques."
+author:
+  name: Margot Nadot
+  email: margot.nadot@gmail.com
+  url: https://margotnadot.com 
+demo: https://margotnadot.com
+keywords: portfolio, graphic design, creativity, fast, responsive, html5, css3
+license: MIT

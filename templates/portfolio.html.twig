@@ -1,0 +1,33 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+{% set collection = page.collection() %}
+
+<section class="section">
+    <div class="container is-max-desktop">
+    <header class="mb-6">
+        <h1 class="title is-1 is-uppercase est-interlettre-4 has-text-centered">{{ page.title|raw }}<h1>
+        <p class="has-text-centered is-size-4">{{ page.header.chapeau|raw }}</p>
+    </header>
+    <article>
+        {% include 'partials/markdown-colonnes.html.twig' %}
+    </article>
+    </div>
+</section>
+
+{% if page.header.content %}
+<section class="section">
+    <div class="container is-widescreen">
+        <div class="columns is-multiline">
+        {% for child in collection %}
+            <div class="column is-one-third">
+                {% include 'partials/vignette-portfolio.html.twig' with {'page': child, 'truncate': true} %}
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{% endblock %}

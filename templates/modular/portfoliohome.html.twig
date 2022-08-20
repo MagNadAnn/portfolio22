@@ -1,0 +1,52 @@
+<section class="section">
+    <div class="container is-widescreen py-6">
+        <div class="columns is-variable is-6 is-multiline">
+
+        {% for categorie in page.header.categories %}
+
+            <div class="column block {{ categorie.layoutClasses }}">
+                    
+                <h2 class="block title is-3 is-uppercase py-4">{{ categorie.titre }}</h2>
+
+                {% set classesMain = loop.index is same as(3) ? "columns is-variable is-6 is-multiline" : "" %}
+                {% set classesItem = loop.index is same as(3) ? "column is-half-tablet is-full-desktop" : "" %}
+
+                <main class="block {{ classesMain }}">
+
+                    {% for item in categorie.items %}
+
+                        <div class="block {{ classesItem }}">
+
+                        {% if item.temoignage %}
+
+                            {% include 'partials/temoignage.html.twig' with {'temoignage': page.find(item.temoignage), 'truncate': true} %}
+
+                        {% elseif item.folio %}    
+
+                            {% include 'partials/vignette-portfolio.html.twig' with {'page': page.find(item.folio), 'truncate': true} %}
+
+                        {% endif %}
+
+                        </div>
+
+                    {% endfor %}
+
+                </main>
+
+                <footer>
+
+                    {% for lien in categorie.liens %}
+
+                            <p class="has-text-centered block"><a href="{{ page.find(lien.lien).url }}" class="bouton">{{ lien.texte }}</a></p>
+                        
+                    {% endfor %}
+
+                </footer>
+
+            </div>
+
+        {% endfor %}
+
+        </div>
+    </div>
+</section>

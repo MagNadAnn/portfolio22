@@ -1,0 +1,15 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+<section class="section">
+    <div class="container is-max-desktop">
+    <header class="mb-6">
+        <h1 class="title is-1 is-uppercase est-interlettre-4 has-text-centered">{{ page.title|raw }}<h1>
+        <p class="has-text-centered is-size-4">{{ page.header.chapeau|raw }}</p>
+    </header>
+    <article>
+        {% include 'partials/markdown-colonnes.html.twig' %}
+    </article>
+    </div>
+</section>
+{% endblock %}

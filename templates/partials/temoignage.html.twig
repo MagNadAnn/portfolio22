@@ -1,0 +1,15 @@
+<div class="item-temoignage">
+    <p class="title is-4">{{ temoignage.header.chapeau }}</p>
+    <blockquote>
+        {% autoescape false %}
+            {{ temoignage.content|raw }}
+        {% endautoescape %}
+        
+        <cite>
+            <strong>{{ temoignage.title }}</strong><br><small>{{ temoignage.header.fonction }}</small>
+            <figure class="image is-96x96">
+            <img title="portrait de {{ temoignage.title }}" class="is-rounded" src="{{ temoignage.url~'/portrait.jpg' }}">
+            </figure>
+        </cite>
+    </blockquote>
+</div>

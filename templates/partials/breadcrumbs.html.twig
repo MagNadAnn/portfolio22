@@ -1,0 +1,36 @@
+{% set crumbs = breadcrumbs.get() %}
+{% set breadcrumbs_config = config.plugins.breadcrumbs %}
+{% set divider = breadcrumbs_config.icon_divider_classes %}
+
+{% if crumbs|length > 1 or breadcrumbs_config.show_all %}
+<ul itemscope itemtype="http://schema.org/BreadcrumbList">
+
+    {% for crumb in crumbs %}
+    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        {% if not loop.last %}
+            {% if crumb.routable %}
+                <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{{ crumb.url|e }}" itemid="{{ crumb.url|e }}">
+                    {{ crumb.menu|e }}
+                </a>
+            {% else  %}
+                <a itemscope itemtype="http://schema.org/Thing" itemprop="item" itemid="{{ crumb.url|e }}">
+                    {{ crumb.menu|e }}
+                </a>
+            {% endif %}
+        {% else %}
+            {% if breadcrumbs_config.link_trailing %}
+                <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{{ crumb.url|e }}" itemid="{{ crumb.url|e }}">
+                    {{ crumb.menu|e }}
+                </a>
+            {% else %}
+                <a itemscope itemtype="http://schema.org/Thing" itemprop="item" itemid="{{ crumb.url|e }}" aria-current="page"  class="is-active est-page-active">
+                    {{ crumb.menu|e }}
+                </a>
+            {% endif %}
+        {% endif %}
+        <meta itemprop="position" content="{{ loop.index }}" />
+    </li>
+    {% endfor %}
+
+</ul>
+{% endif %}

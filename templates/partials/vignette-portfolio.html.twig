@@ -1,0 +1,13 @@
+<figure class="image">
+    <a href="{{ page.url }}" title="En savoir plus sur la création pour {{ page.title }}" class="item-folio">
+        <img src="{{ page.media[page.header.vignette].url }}" alt="aperçu de la création pour {{ child.title }}">
+
+        {% if page.header.taxonomy.tag %}
+        <div class="tags">
+            {% for tag in page.header.taxonomy.tag %}
+                <span class="tag">{{ tag }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </a>
+</figure>

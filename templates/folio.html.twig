@@ -1,0 +1,102 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+<article>
+    <section class="section">
+        <div class="container is-widescreen">
+            <div class="columns is-multiline is-vcentered is-centered">
+            <div class="column is-full-tablet is-narrow-desktop">
+                <figure class="image est-max-30 mx-auto">
+                    <img class="is-rounded" src="{{ page.media[page.header.vignette].url }}">
+                </figure>
+            </div>
+            <div class="column is-full-tablet is-narrow-desktop">
+                <header class="est-max-30-tablet">
+
+                    <h1 class="title is-1 has-text-centered">{{ page.title }}<h1>
+
+                    {% if page.header.mission %}
+                    <h2 class="title is-4 mb-6 has-text-centered">{{ page.header.mission }}</h2>
+                    {% endif %}
+                    
+                    {% if page.header.taxonomy.tag %}
+                    <div class="block is-flex is-align-items-center">
+                        <h3 class="title is-6 mb-0 mr-2 folio-fiche-tabulation has-text-right">Mission</h3>
+                        <div class="tags">
+                        {% for tag in page.header.taxonomy.tag %}
+                            <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if page.header.taxonomy.technique %}
+                    <div class="block is-flex is-align-items-center">
+                        <h3 class="title is-6 mb-0 mr-2 folio-fiche-tabulation has-text-right">Techniques & logiciels</h3>
+                        <div class="tags">
+                        {% for technique in page.header.taxonomy.technique %}
+                            <span class="tag">{{ technique }}</span>
+                        {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if page.header.taxonomy.client %}
+                    <div class="block is-flex is-align-items-center">
+                        <h3 class="title is-6 mb-0 mr-2 folio-fiche-tabulation has-text-right">Client·e</h3>
+                        <div class="tags">
+                        {% for client in page.header.taxonomy.client %}
+                            <span class="tag">{{ client }}</span>
+                        {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if page.header.taxonomy.prix %}
+                    <div class="block is-flex is-align-items-center">
+                        <h3 class="title is-6 mb-0 mr-2 folio-fiche-tabulation has-text-right">Prix</h3>
+                        <div class="tags">
+                            <span class="tag">{{ page.header.prix }}</span>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if page.header.liens %}
+                    <div class="block is-flex is-align-items-center">
+                        <span class="folio-fiche-tabulation"></span>
+                        <p>
+                        {% for lien in page.header.liens %}
+                            <a class="bouton" href="{{lien.url}}">{{ lien.titre }}</a>
+                        {% endfor %}
+                        </p>
+                    </div>
+                    {% endif %}
+
+                </header>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container is-widescreen">
+            <div class="columns is-gapless is-multiline">
+            {% for image in page.media %}
+                <div class="column is-one-third">
+                    <figure class="image">
+                        {{ image.html|raw }}
+                    </figure>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% if content %}
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title is-2 has-text-centered">Le processus de création</h2>
+            {% include 'partials/markdown-colonnes.html.twig' with {'page': page, 'truncate': true} %}
+        </div>
+    </section>
+    {% endif %}
+
+</article>
+{% endblock %}
