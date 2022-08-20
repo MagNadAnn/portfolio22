@@ -13,7 +13,7 @@
             <div class="column is-full-tablet is-narrow-desktop">
                 <header class="est-max-30-tablet">
 
-                    <h1 class="title is-1 has-text-centered">{{ page.title }}<h1>
+                    <h1 class="title is-1 has-text-centered">{{ page.title|raw }}<h1>
 
                     {% if page.header.mission %}
                     <h2 class="title is-4 mb-6 has-text-centered">{{ page.header.mission }}</h2>
@@ -79,7 +79,8 @@
     <section class="section">
         <div class="container is-widescreen">
             <div class="columns is-gapless is-multiline">
-            {% for image in page.media|sort %}
+            {% set galerie = page.media|sort %}
+            {% for image in galerie %}
                 <div class="column is-one-third">
                     <figure class="image">
                         {{ image.html|raw }}
