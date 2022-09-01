@@ -10,21 +10,21 @@
         {% if not loop.last %}
             {% if crumb.routable %}
                 <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{{ crumb.url|e }}" itemid="{{ crumb.url|e }}">
-                    {{ crumb.menu|e }}
+                    <span itemprop="name">{{ crumb.menu|e }}</span>
                 </a>
             {% else  %}
                 <a itemscope itemtype="http://schema.org/Thing" itemprop="item" itemid="{{ crumb.url|e }}">
-                    {{ crumb.menu|e }}
+                    <span itemprop="name">{{ crumb.menu|e }}</span>
                 </a>
             {% endif %}
         {% else %}
             {% if breadcrumbs_config.link_trailing %}
                 <a itemscope itemtype="http://schema.org/Thing" itemprop="item" href="{{ crumb.url|e }}" itemid="{{ crumb.url|e }}">
-                    {{ crumb.menu|e }}
+                    <span itemprop="name">{{ crumb.menu|e }}</span>
                 </a>
             {% else %}
                 <a itemscope itemtype="http://schema.org/Thing" itemprop="item" itemid="{{ crumb.url|e }}" aria-current="page"  class="is-active est-page-active">
-                    {{ crumb.menu|e }}
+                    <span itemprop="name">{{ crumb.menu|e }}</span>
                 </a>
             {% endif %}
         {% endif %}
